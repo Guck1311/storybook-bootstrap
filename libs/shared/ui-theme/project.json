@@ -1,0 +1,20 @@
+{
+  "name": "ui-theme",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/ui-theme/src",
+  "prefix": "lib",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "build": {
+      "executor": "@nx/angular:package",
+      "options": {
+        "tsConfig": "libs/shared/ui-theme/tsconfig.lib.json",
+        "project": "libs/shared/ui-theme/ng-package.json"
+      }
+    }
+  }
+}

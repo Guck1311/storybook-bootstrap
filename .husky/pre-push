@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+echo "Running unit tests before push..."
+
+if git rev-parse --verify origin/develop >/dev/null 2>&1; then
+  echo "✅ origin/develop found, running affected tests..."
+  npx nx affected --target=test --base=origin/develop --head=HEAD
+else
+  echo "⚠️  origin/develop not found, running all tests instead..."
+  npx nx run-many --target=test --all
+fi

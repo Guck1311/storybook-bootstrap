@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# List of allowed JS/MJS files by name only (basename)
+ALLOWED_FILES=("jest.preset.js" "eslint.config.mjs" "eslint.angular-selector-rules.mjs" "commitlint.config.js" "run-cypress.js")
+
+# Find staged .js/.mjs files
+blocked_files=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.m?js$' | while read file; do
+  filename=$(basename "$file")
+  if [[ ! " ${ALLOWED_FILES[@]} " =~ " $filename " ]]; then
+    echo "$file"
+  fi
+done)
+
+if [ -n "$blocked_files" ]; then
+  echo "❌ Commit blocked. JavaScript files are not allowed (use .ts instead):"
+  echo "$blocked_files"
+  exit 1
+fi
+
+# Run lint-staged
+npx lint-staged

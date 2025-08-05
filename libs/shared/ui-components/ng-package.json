@@ -1,0 +1,13 @@
+{
+  "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../../dist/libs/shared/ui-components",
+  "lib": {
+    "entryFile": "src/index.ts",
+    "styleIncludePaths": [
+      "../../../node_modules/@debug/ui-theme",
+      "../../../node_modules/bootstrap/scss"
+    ]
+  },
+  "allowedNonPeerDependencies": ["debug"],
+  "assets": ["src/lib/**/*.css", "src/lib/**/*.scss", "src/lib/**/*.html"]
+}
