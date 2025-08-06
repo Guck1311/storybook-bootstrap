@@ -34,6 +34,7 @@
         "configDir": "libs/shared/ui-components/.storybook",
         "browserTarget": "ui-components:build-storybook",
         "compodoc": false,
+        "styles": ["libs/shared/ui-components/.storybook/storybook.scss"],
         "stylePreprocessorOptions": {
           "includePaths": ["node_modules/@debug/ui-theme/index"]
         }
